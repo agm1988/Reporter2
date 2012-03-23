@@ -42,6 +42,7 @@ class LoginScreen < Sinatra::Base
     user = User.authenticate(params[:user][:login], params[:user][:password])
     if user
       session[:user_id] = user.id
+      # redirect '/'
       if user.login == "newcomer"
          redirect '/new'
       else
@@ -77,6 +78,24 @@ class Reporter < Sinatra::Base
     end
   end
 
+    module ReportHelper
+      def title(value = nil)
+        @title = value if value
+        @title ? "Controller Demo - #{@title}" : "Controller Demo"
+      end
+
+      #flash helpers
+
+      def flash(args={})
+        session[:flash] = args
+      end
+
+      def flash_now(args={})
+        @flash = args
+      end
+    end
+    helpers ReportHelper
+
   get('/') do
 
 
@@ -95,7 +114,7 @@ class Reporter < Sinatra::Base
      session[:user_id] = nil
      redirect  "/"
    else
-     redirect('/new')
+     erb :new_user
    end
   end
 

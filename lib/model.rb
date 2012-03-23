@@ -8,7 +8,7 @@ class User
     property :id,           Serial
     property :name,        String
     property :email,        String
-    property :login,        String
+    property :login,        String, :required => true, :unique => true
     property :position,        String
     property :password_hash,        String
     property :password_salt,        String

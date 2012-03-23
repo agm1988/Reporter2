@@ -1,6 +1,18 @@
 <h1><%= @title %></h1>
 
+
+
 <form	action="/create" method="post" id="user">
+
+   <% if @user %>
+   <div id="errorExplanation">
+     <ul>
+      <% @user.errors.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
   	<p>
 		<label>Name:</label><br />
 		<input type="text" name="user[name]" id="name" />
