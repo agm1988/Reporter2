@@ -2,6 +2,28 @@ require 'sinatra/base'
 require "data_mapper"
 
 class LoginScreen < Sinatra::Base
+  before do
+    @flash = session[:flash] || {}
+    session[:flash] = nil
+  end
+
+      module ReportHelper
+      def title(value = nil)
+        @title = value if value
+        @title ? "Controller Demo - #{@title}" : "Controller Demo"
+      end
+
+      #flash helpers
+
+      def flash(args={})
+        session[:flash] = args
+      end
+
+      def flash_now(args={})
+        @flash = args
+      end
+    end
+    helpers ReportHelper
   enable :sessions
 
   get('/login') { erb :login }
@@ -27,6 +49,7 @@ class LoginScreen < Sinatra::Base
       end
 
     else
+      flash(:notice => "Wrong login/password combination")
       redirect '/login'
     end
 
@@ -38,13 +61,7 @@ class LoginScreen < Sinatra::Base
 end
 
 class Reporter < Sinatra::Base
-    module ReportHelper
-      def title(value = nil)
-        @title = value if value
-        @title ? "Controller Demo - #{@title}" : "Controller Demo"
-      end
-    end
-    helpers ReportHelper
+
 
   #helpers ApplicationHelper
   # "прослойка" будет запущена перед фильтрами
@@ -54,6 +71,8 @@ class Reporter < Sinatra::Base
 
   before do
     unless session[:user_id]
+      @flash = session[:flash] || {}
+      session[:flash] = nil
       halt "Access denied, please <a href='/login'>login</a>."
     end
   end
@@ -65,7 +84,7 @@ class Reporter < Sinatra::Base
   end
 
   get '/new' do
-    session[:user_id] = nil
+    #session[:user_id] = nil
     title "Create new account"
     erb :new_user
   end

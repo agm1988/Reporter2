@@ -10,8 +10,12 @@
     </head>
     <body>
       <div id="message">
-        <%= @flash.inspect %>
+        <% if @flash %>
+          <p class="notice"><%= @flash[:notice] %></p>
+        <% end %>
       </div>
+
+
         <%= yield %>
 
     <%= session.inspect %>
