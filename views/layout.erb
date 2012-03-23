@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+
+        <!--<link rel="stylesheet" media="screen" href="../public/css/blog.css" />-->
+        <!--<script type="text/javascript" src="../public/js/jquery-1.7.1.min.js"></script>-->
+        <!--<script type="text/javascript" src="../public/js/jquery.timeago.js"></script>-->
+        <!--<script type="text/javascript" src="../public/js/blog.js"></script>-->
+    </head>
+    <body>
+      <div id="message">
+        <%= @flash.inspect %>
+      </div>
+        <%= yield %>
+
+    <%= session.inspect %>
+    <%= "#{session['user_name']} !!!" %>
+    </body>
+</html>
+

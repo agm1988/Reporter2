@@ -1,0 +1,28 @@
+<h1><%= @title %></h1>
+
+<form	action="/create" method="post" id="user">
+  	<p>
+		<label>Name:</label><br />
+		<input type="text" name="user[name]" id="name" />
+	</p>
+	<p>
+		<label>login:</label><br />
+		<input type="text" name="user[login]" id="login" />
+	</p>
+	<p>
+		<label>Email:</label><br />
+		<input type="text" name="user[email]" id="email" />
+	</p>
+  	<p>
+		<label>Position:</label><br />
+		<input type="text" name="user[position]" id="position" />
+	</p>
+  	<p>
+		<label>Password:</label><br />
+		<input type="text" name="user[password]" id="password" />
+	</p>
+
+	<p>
+		<input type="submit" value="Create account">
+	</p>
+</form>
