@@ -23,10 +23,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="reporter.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="reporter.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reporter.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="116" column="18" selection-start="2301" selection-end="2301" vertical-scroll-proportion="0.7058824">
+            <state line="116" column="18" selection-start="2301" selection-end="2301" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -35,16 +35,16 @@
       <file leaf-file-name="new_user.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/new_user.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="14" selection-start="89" selection-end="89" vertical-scroll-proportion="-3.625">
+            <state line="36" column="25" selection-start="769" selection-end="769" vertical-scroll-proportion="-14.25">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="model.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="model.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/model.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="35" selection-start="273" selection-end="273" vertical-scroll-proportion="0.0">
+            <state line="22" column="58" selection-start="790" selection-end="790" vertical-scroll-proportion="0.5080214">
               <folding />
             </state>
           </provider>
@@ -95,9 +95,9 @@
         <option value="$PROJECT_DIR$/helpers/application_helper.rb" />
         <option value="$PROJECT_DIR$/config.ru" />
         <option value="$PROJECT_DIR$/views/layout.erb" />
-        <option value="$PROJECT_DIR$/lib/model.rb" />
-        <option value="$PROJECT_DIR$/views/new_user.erb" />
         <option value="$PROJECT_DIR$/reporter.rb" />
+        <option value="$PROJECT_DIR$/views/new_user.erb" />
+        <option value="$PROJECT_DIR$/lib/model.rb" />
       </list>
     </option>
   </component>
@@ -402,23 +402,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/reporter.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="116" column="18" selection-start="2301" selection-end="2301" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/new_user.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="14" selection-start="89" selection-end="89" vertical-scroll-proportion="-3.625">
+        <state line="36" column="25" selection-start="769" selection-end="769" vertical-scroll-proportion="-14.25">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/model.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="35" selection-start="273" selection-end="273" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/reporter.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="18" selection-start="2301" selection-end="2301" vertical-scroll-proportion="0.7058824">
+        <state line="22" column="58" selection-start="790" selection-end="790" vertical-scroll-proportion="0.5080214">
           <folding />
         </state>
       </provider>

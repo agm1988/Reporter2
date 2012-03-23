@@ -3,17 +3,25 @@ DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/lib/reporter.db")
 class User
   require 'bcrypt'
 
+  EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
+
     include DataMapper::Resource
 
     property :id,           Serial
     property :name,        String
-    property :email,        String
+    property :email,        String, :format => EMAIL_REGEX
     property :login,        String, :required => true, :unique => true
     property :position,        String
     property :password_hash,        String
     property :password_salt,        String
     property :created_at,   DateTime
-    attr_accessor :password
+    attr_accessor :password, :password_confirmation
+
+   validates_presence_of :name, :email, :position
+   validates_presence_of :password
+   validates_confirmation_of :password
+   validates_length_of :name, :login, :password, :min => 6
+
 
     before :save, :encrypt_password
 
