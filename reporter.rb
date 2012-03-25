@@ -3,26 +3,34 @@ require "data_mapper"
 
 class LoginScreen < Sinatra::Base
   before do
-    @flash = session[:flash] || {}
-    session[:flash] = nil
+    @flash = session[:flash2] || {}
+    session[:flash2] = nil
   end
 
-      module ReportHelper
-      def title(value = nil)
-        @title = value if value
-        @title ? "Controller Demo - #{@title}" : "Controller Demo"
-      end
+  #module ReportHelper
+  #  def title(value = nil)
+  #    @title = value if value
+  #    @title ? "Controller Demo - #{@title}" : "Controller Demo"
+  #  end
+  #
+  #    #flash helpers
+  #
+  #  def flashsesion(args={})
+  #    session[:flash2] = args
+  #  end
+  #
+  #  def flash_now(args={})
+  #    @flash = args
+  #  end
+  #
+  #  def current_user
+  #    @current_user ||= User.get(session[:user_id]) if session[:user_id]
+  #  end
+  #end
 
-      #flash helpers
 
-      def flash(args={})
-        session[:flash] = args
-      end
 
-      def flash_now(args={})
-        @flash = args
-      end
-    end
+
     helpers ReportHelper
   enable :sessions
 
@@ -50,7 +58,7 @@ class LoginScreen < Sinatra::Base
       end
 
     else
-      flash(:notice => "Wrong login/password combination")
+      flashsesion(:notice => "Wrong login/password combination")
       redirect '/login'
     end
 
@@ -59,6 +67,12 @@ class LoginScreen < Sinatra::Base
   #redirect '/new'
 
   end
+
+  get '/logout' do
+    session[:user_id] = nil
+    redirect "/"
+  end
+
 end
 
 class Reporter < Sinatra::Base
@@ -71,35 +85,52 @@ class Reporter < Sinatra::Base
   use LoginScreen
 
   before do
-    unless session[:user_id]
       @flash = session[:flash] || {}
       session[:flash] = nil
-      halt "Access denied, please <a href='/login'>login</a>."
+    unless session[:user_id]
+      redirect '/login'
+      #halt "Access denied, please <a href='/login'>login</a>."
     end
   end
 
-    module ReportHelper
-      def title(value = nil)
-        @title = value if value
-        @title ? "Controller Demo - #{@title}" : "Controller Demo"
-      end
-
-      #flash helpers
-
-      def flash(args={})
-        session[:flash] = args
-      end
-
-      def flash_now(args={})
-        @flash = args
-      end
-    end
+    #module ReportHelper
+    #  def title(value = nil)
+    #    @title = value if value
+    #    @title ? "Controller Demo - #{@title}" : "Controller Demo"
+    #  end
+    #
+    #  #flash helpers
+    #
+    #  def flash(args={})
+    #    session[:flash] = args
+    #  end
+    #
+    #  def flash_now(args={})
+    #    @flash = args
+    #  end
+    #
+    #  def current_user
+    #    @current_user ||= User.get(session[:user_id]) if session[:user_id]
+    #  end
+    #
+    #  def time_sum(arr)
+    #     tmp = arr.collect(&:spend_time).collect(&:to_i).inject(0, &:+)
+    #    "#{tmp / 60}h : #{tmp % 60 }min"
+    #  end
+    #end
     helpers ReportHelper
 
-  get('/') do
 
+  # this will only affect Sinatra::Application
 
-  erb "Hello #{session[:user_id]} !!!."
+ get('/') do
+    erb :calendar
+  # erb "Hello #{session[:user_id]} !!!."
+ end
+
+  post('/daily') do
+    erb :daily
+  # erb "Hello #{session[:user_id]} !!!."
   end
 
   get '/new' do
@@ -112,9 +143,60 @@ class Reporter < Sinatra::Base
    @user = User.new(params[:user])
    if @user.save
      session[:user_id] = nil
+     flash(:notice => "Accoutn successfuly created!")
      redirect  "/"
    else
      erb :new_user
+   end
+  end
+
+  get '/calendar_show' do
+    #@selfd = Record.selfd
+    @date = DateTime.parse(params[:report][:date]) if !session[:date]
+    @date = DateTime.parse(session[:date]) if session[:date]
+    session[:date] = nil
+    @records = Record.all(:date => @date)     #--------------
+    @selfd = @records.selfd
+    @work = @records.work
+    @extra = @records.extra
+    @team = @records.team
+    erb :calendar_show
+  end
+
+  post '/new_record' do
+    @projects = Project.all
+    # @date = DateTime.parse(params[:report][:date])
+    @date = DateTime.parse(params[:date])
+    @records = Record.all(:date => @date)
+    erb :new_record
+  end
+
+  post '/create_record' do
+    #@user = User.get(current_user.id)
+    #if @user.records.create(params[:record])
+    #  flash(:notice => "Report created successfully!")
+    #  redirect "/"
+    #else
+    #  @projects = Project.all
+    #  @date = DateTime.parse(params[:report][:date])
+    #  erb :new_record
+    #end
+
+   #@record = Record.new(params[:record])
+    #reco
+   @date = DateTime.parse(params[:record][:date])
+   @record = Record.new(params[:record])
+   if @record.save
+     flash(:notice => "Report successfully created!")
+     session[:date] = params[:record][:date]
+     redirect  "/calendar_show"
+
+   else
+     @projects = Project.all
+     # @date = DateTime.parse(params[:report][:date])
+     flash(:notice => "Record was not created!")
+     @records = Record.all(:date => @date)
+     erb :new_record
    end
   end
 

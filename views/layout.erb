@@ -2,13 +2,14 @@
 <html>
     <head>
         <title></title>
-
-        <!--<link rel="stylesheet" media="screen" href="../public/css/blog.css" />-->
-        <!--<script type="text/javascript" src="../public/js/jquery-1.7.1.min.js"></script>-->
-        <!--<script type="text/javascript" src="../public/js/jquery.timeago.js"></script>-->
-        <!--<script type="text/javascript" src="../public/js/blog.js"></script>-->
+      <link type="text/css" href="css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="stylesheet" />
+      <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+      <script type="text/javascript" src="js/jquery-ui-1.8.18.custom.min.js"></script>
     </head>
     <body>
+    <% if current_user %>
+        <p>Logged in as: <%= current_user.login %> | <a href='/'>calendar</a> | <a href='/logout'>logout</a></p>
+    <% end %>
       <div id="message">
         <% if @flash %>
           <p class="notice"><%= @flash[:notice] %></p>

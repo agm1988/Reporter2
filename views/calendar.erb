@@ -1,0 +1,30 @@
+<h2>Calendar</h2>
+<form	action="/calendar_show" method="get" id="report">
+  	<p>
+		<label>Select date:</label><br />
+		<input type="text" name="date" id="date" />
+        <input type="text" name="report[date]" id="date_sent" />
+        <input type="submit" value="find  reports">
+	</p>
+
+
+
+</form>
+<script>
+	$(function() {
+        var myDate = new Date();
+    	var month = myDate.getMonth() + 1;
+    	var prettyDate =  myDate.getDate() + '/' + month + '/' +  myDate.getFullYear();
+    	$("#date_sent").val(prettyDate);
+        $("#date").val(prettyDate);
+
+		$( "#date" ).datepicker({ dateFormat: 'dd-mm-yy',
+        altField: '#date_sent'});
+
+
+	});
+</script>
+
+
+
+-----------------------------------------------------------
