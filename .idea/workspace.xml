@@ -50,15 +50,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="model.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/model.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="138" column="29" selection-start="3531" selection-end="3531" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="layout.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/layout.erb">
           <provider selected="true" editor-type-id="text-editor">
@@ -95,19 +86,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new_record.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="new_record.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/new_record.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new_user.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="login.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/login.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="25" selection-start="309" selection-end="309" vertical-scroll-proportion="-6.875">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="new_user.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/new_user.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="6" selection-start="1035" selection-end="1035" vertical-scroll-proportion="-17.083334">
+            <state line="35" column="27" selection-start="840" selection-end="840" vertical-scroll-proportion="0.5339806">
               <folding />
             </state>
           </provider>
@@ -133,9 +133,7 @@
         <option value="$PROJECT_DIR$/README" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/views/layout.erb" />
-        <option value="$PROJECT_DIR$/views/login.erb" />
         <option value="$PROJECT_DIR$/views/calendar_show.erb" />
-        <option value="$PROJECT_DIR$/views/new_user.erb" />
         <option value="$PROJECT_DIR$/views/not_found.erb" />
         <option value="$PROJECT_DIR$/views/calendar.erb" />
         <option value="$PROJECT_DIR$/views/consolidated.erb" />
@@ -143,6 +141,8 @@
         <option value="$PROJECT_DIR$/views/error.erb" />
         <option value="$PROJECT_DIR$/public/css/application.css" />
         <option value="$PROJECT_DIR$/views/new_record.erb" />
+        <option value="$PROJECT_DIR$/views/login.erb" />
+        <option value="$PROJECT_DIR$/views/new_user.erb" />
       </list>
     </option>
   </component>
@@ -495,13 +495,6 @@
         <state line="7" column="0" selection-start="65" selection-end="723" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/login.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="2" selection-start="422" selection-end="422" vertical-scroll-proportion="-10.625">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/helpers.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="34" column="40" selection-start="702" selection-end="702" vertical-scroll-proportion="0.0" />
@@ -517,13 +510,6 @@
     <entry file="file://$PROJECT_DIR$/lib/model.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="138" column="29" selection-start="3531" selection-end="3531" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/new_user.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="6" selection-start="1035" selection-end="1035" vertical-scroll-proportion="-17.083334">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/not_found.erb">
@@ -578,6 +564,20 @@
     <entry file="file://$PROJECT_DIR$/views/new_record.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/login.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="25" selection-start="309" selection-end="309" vertical-scroll-proportion="-6.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/new_user.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="27" selection-start="840" selection-end="840" vertical-scroll-proportion="0.5339806">
           <folding />
         </state>
       </provider>
