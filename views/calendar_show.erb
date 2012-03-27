@@ -5,7 +5,7 @@
 
     <p>--REPORTING TYPE-|--SPEND TIME--|--PROJECT NAME--</p>
     <% @records.each do |rec| %>
-        <p><%= rec.reporting_type %> | -- <%= rec.spend_time %> --  | <%= rec.project %></p>
+        <p><%= rec.reporting_type %> | -- <%= rec.spend_time %> --  | <%= rec.project.name %></p>
     <% end %>
 
     <% else %>

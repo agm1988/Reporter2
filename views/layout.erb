@@ -2,12 +2,14 @@
 <html>
     <head>
         <title></title>
+      <link type="text/css" href="css/application.css" rel="stylesheet" />
       <link type="text/css" href="css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="stylesheet" />
       <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
       <script type="text/javascript" src="js/jquery-ui-1.8.18.custom.min.js"></script>
     </head>
     <body>
-    <% if current_user %>
+    <div id="wrapper">
+    <% if current_user && current_user.login != "newcomer" %>
         <p>Logged in as: <%= current_user.login %> | <a href='/'>calendar</a> | <a href='/logout'>logout</a></p>
     <% end %>
       <div id="message">
@@ -19,8 +21,9 @@
 
         <%= yield %>
 
-    <%= session.inspect %>
-    <%= "#{session['user_name']} !!!" %>
+    <% session.inspect %>
+    <% "#{session['user_name']} !!!" %>
+     </div>
     </body>
 </html>
 

@@ -10,21 +10,46 @@
 
 
 </form>
+
+<form	action="/consolidated" method="post" id="cons">
+  	<p>
+		<label>Select month:</label><br />
+        <select name="month">
+          <option value="01">January</option>
+          <option value="02">February</option>
+          <option value="03">March</option>
+          <option value="04">April</option>
+          <option value="05">May</option>
+          <option value="06">June</option>
+          <option value="07">July</option>
+          <option value="08">August</option>
+          <option value="09">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+        <input type="submit" value="Consolidated report">
+	</p>
+
+
+
+</form>
+
 <script>
 	$(function() {
         var myDate = new Date();
-    	var month = myDate.getMonth() + 1;
-    	var prettyDate =  myDate.getDate() + '/' + month + '/' +  myDate.getFullYear();
+    	var month = ( '0' + (myDate.getMonth()+1) ).slice( -2 );
+        //('0' + myDate.getMonth() + 1).slice( -2 );
+    	//var prettyDate =  myDate.getDate() + '/' + month + '/' + myDate.getFullYear();
+        var prettyDate =  myDate.getFullYear() + '-' + month + '-' + myDate.getDate();
     	$("#date_sent").val(prettyDate);
         $("#date").val(prettyDate);
 
-		$( "#date" ).datepicker({ dateFormat: 'dd-mm-yy',
+		$( "#date" ).datepicker({ dateFormat: 'yy-mm-dd',
+        altFormat: 'yy-mm-dd',
         altField: '#date_sent'});
 
-
 	});
+
+
 </script>
-
-
-
------------------------------------------------------------

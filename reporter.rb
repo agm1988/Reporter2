@@ -2,6 +2,9 @@ require 'sinatra/base'
 require "data_mapper"
 
 class LoginScreen < Sinatra::Base
+
+  configure(:development) { set :session_secret, "something" }
+
   before do
     @flash = session[:flash2] || {}
     session[:flash2] = nil
@@ -128,11 +131,6 @@ class Reporter < Sinatra::Base
   # erb "Hello #{session[:user_id]} !!!."
  end
 
-  post('/daily') do
-    erb :daily
-  # erb "Hello #{session[:user_id]} !!!."
-  end
-
   get '/new' do
     #session[:user_id] = nil
     title "Create new account"
@@ -152,6 +150,10 @@ class Reporter < Sinatra::Base
 
   get '/calendar_show' do
     #@selfd = Record.selfd
+
+    #@date = params[:report][:date] if !session[:date]    # ------------------------
+    #@date = session[:date] if session[:date]             # --------------------------
+
     @date = DateTime.parse(params[:report][:date]) if !session[:date]
     @date = DateTime.parse(session[:date]) if session[:date]
     session[:date] = nil
@@ -166,6 +168,7 @@ class Reporter < Sinatra::Base
   post '/new_record' do
     @projects = Project.all
     # @date = DateTime.parse(params[:report][:date])
+    #@date = params[:date] # ---------------------------------------------------------------
     @date = DateTime.parse(params[:date])
     @records = Record.all(:date => @date)
     erb :new_record
@@ -184,6 +187,7 @@ class Reporter < Sinatra::Base
 
    #@record = Record.new(params[:record])
     #reco
+   #@date = params[:record][:date]  # --------------------------------------
    @date = DateTime.parse(params[:record][:date])
    @record = Record.new(params[:record])
    if @record.save
@@ -199,6 +203,34 @@ class Reporter < Sinatra::Base
      erb :new_record
    end
   end
+
+  post '/consolidated' do
+    @month = params[:month].to_i
+    # @reports = current_user.records.this_month(@month)
+
+    #@projects = Project.records.this_month
+    #@projects = current_user.projects.this_month
+    # @pr = Project.get(1)
+    # @prj = current_user.projects.get(@i).records
+    # @proj = @pr.users.get(current_user.id).records
+    #@rec = Project(@i).records
+
+    #-----------------------------------
+    @records = current_user.records.this_month(params[:month].to_i)
+    @days = @records.collect(&:date).collect(&:day).uniq
+    @projects = current_user.projects.uniq
+    erb :consolidated
+  end
+
+  not_found do
+    title 'Not Found!'
+    erb :not_found
+  end
+
+  error do
+    erb :error
+  end
+
 
 
 end

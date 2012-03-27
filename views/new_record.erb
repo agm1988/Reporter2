@@ -14,15 +14,15 @@
 
     <p>
        <label>Project:</label>
-        <select id="record_project_id" name="record[project]">
+        <select id="record_project_id" name="record[project_id]">
           <% @projects.each do |proj| %>
-            <option value="<%= proj.name %>"><%= proj.name %></option>
+            <option value="<%= proj.id %>"><%= proj.name %></option>
               <% end %>
         </select>
 
 		<label>Report type:</label>
         <select name="record[reporting_type]">
-          <option value="self-deployment">self-deployment</option>
+          <option value="self_deployment">self-deployment</option>
           <option value="working">working</option>
           <option value="extra">extra</option>
           <option value="team">team</option>

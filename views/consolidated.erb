@@ -1,0 +1,63 @@
+<p>Records: <%= @records.inspect %></p>
+<p>Days: <%= @days.count %></p>
+
+<p>Projects: <%= @projects.count %></p>
+
+
+<h2>Consoledated peport for <%= show_month(@month)%></h2>
+<%= "No reports found" if @records.blank? %>
+
+<% @days.each do |day| %>
+
+    <p><%= show_date(day, @month) %></p>
+
+    <!-- self development -->
+    <h3>Self development:</h3>
+    <table>
+      <tr><td>Project</td><td>Activity</td><td>Time</td></tr>
+    <% alls = Record.this_day(@month, day).selfd.each do |record| %>
+      <tr><td><%= record.project.name %></td><td><%= record.description %></td><td><%= hours(record.spend_time) %></td></tr>
+     <% end %>
+      <tr><td></td><td></td><td>Total: <%= time_sum(alls) %></td></tr>
+    </table>
+
+        <!-- working -->
+    <h3>Working time:</h3>
+    <table>
+      <tr><td>Project</td><td>Activity</td><td>Time</td></tr>
+    <% alls = Record.this_day(@month, day).work.each do |record| %>
+      <tr><td><%= record.project.name %></td><td><%= record.description %></td><td><%= hours(record.spend_time) %></td></tr>
+     <% end %>
+      <tr><td></td><td></td><td>Total: <%= time_sum(alls) %></td></tr>
+    </table>
+
+    <h3>Extra time:</h3>
+    <table>
+      <tr><td>Project</td><td>Activity</td><td>Time</td></tr>
+    <% alls = Record.this_day(@month, day).extra.each do |record| %>
+      <tr><td><%= record.project.name %></td><td><%= record.description %></td><td><%= hours(record.spend_time) %></td></tr>
+     <% end %>
+      <tr><td></td><td></td><td>Total: <%= time_sum(alls) %></td></tr>
+    </table>
+
+    <h3>Team work:</h3>
+    <table>
+      <tr><td>Project</td><td>Activity</td><td>Time</td></tr>
+    <% alls = Record.this_day(@month, day).team.each do |record| %>
+      <tr><td><%= record.project.name %></td><td><%= record.description %></td><td><%= hours(record.spend_time) %></td></tr>
+     <% end %>
+      <tr><td></td><td></td><td>Total: <%= time_sum(alls) %></td></tr>
+    </table>
+
+    <p>Total day time: <%= time_sum(Record.this_day(@month, day))%></p>
+    <hr>
+
+
+<% end %>
+<h3>Month total working hours: <%= time_sum(Record.this_month(@month)) %></h3>
+<p>Self deployment: <%= time_sum(Record.this_month(@month).selfd) %>
+   Working: <%= time_sum(Record.this_month(@month).work) %>
+   Team work: <%= time_sum(Record.this_month(@month).team) %>
+   Extra: <%= time_sum(Record.this_month(@month).extra) %></p>
+
+
