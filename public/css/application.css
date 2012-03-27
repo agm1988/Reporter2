@@ -11,6 +11,10 @@ body {
     border: 1px solid #ceccd3;
 }
 
+#errorExplanation ul li {
+    color: red;
+}
+
 .image{
     text-align: center;
 }
@@ -21,6 +25,10 @@ table {
 
 p {
     margin: 2px;
+}
+
+p.notice {
+    color: #f25522;
 }
 
 table,th, td

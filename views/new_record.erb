@@ -1,45 +1,41 @@
-<p><%= current_user.id %>!!!</p>
-
 <form	action="/create_record" method="post" id="record">
 
    <% if @record %>
-   <div id="errorExplanation">
-     <ul>
-      <% @record.errors.each do |msg| %>
+  <div id="errorExplanation">
+    <ul>
+    <% @record.errors.each do |msg| %>
       <li><%= msg %></li>
-      <% end %>
+        <% end %>
     </ul>
   </div>
   <% end %>
 
-    <p>
-       <label>Project:</label>
-        <select id="record_project_id" name="record[project_id]">
-          <% @projects.each do |proj| %>
-            <option value="<%= proj.id %>"><%= proj.name %></option>
-              <% end %>
-        </select>
+  <p>
+    <label>Project:</label>
+    <select id="record_project_id" name="record[project_id]">
+      <% @projects.each do |proj| %>
+      <option value="<%= proj.id %>"><%= proj.name %></option>
+      <% end %>
+    </select>
 
-		<label>Report type:</label>
-        <select name="record[reporting_type]">
-          <option value="self_deployment">self-deployment</option>
-          <option value="working">working</option>
-          <option value="extra">extra</option>
-          <option value="team">team</option>
+    <label>Report type:</label>
+      <select name="record[reporting_type]">
+        <option value="self_deployment">self-deployment</option>
+        <option value="working">working</option>
+        <option value="extra">extra</option>
+        <option value="team">team</option>
+      </select>
+  </p>
+  <p>
 
-        </select>
-
-		<label>Spend time:</label>
-		<input type="text" name="record[time]" id="time" />
-     </p>
-      <p>
-		<label>Description:</label> <br/>
-        <textarea rows="10" cols="45" name="record[description]" id="description" ></textarea>
-
-      date<input type="text" name="record[date]" value="<%= @date %>" id="date" />
-      user<input type="text" name="record[user_id]" value="<%= current_user.id %>" id="user" />
-      </p>
-      <p>
-		<input type="submit" value="Save">
-	</p>
+    <label>Spend time: (H:MM format)</label>
+    <input type="text" name="record[time]" id="time" /><br/>
+    <label>Description:</label><br/>
+    <textarea rows="10" cols="45" name="record[description]" id="description" ></textarea>
+<input type="hidden" name="record[date]" value="<%= @date %>" id="date" />
+<input type="hidden" name="record[user_id]" value="<%= current_user.id %>" id="user" />
+  </p>
+  <p>
+    <input type="submit" value="Save">
+  </p>
 </form>

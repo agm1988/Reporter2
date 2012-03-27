@@ -228,6 +228,7 @@ class Reporter < Sinatra::Base
   end
 
   error do
+    @message = "error: #{request.env['sinatra.error'].to_s}"
     erb :error
   end
 

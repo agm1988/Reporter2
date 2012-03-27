@@ -2,33 +2,20 @@
 <h3>All reports for this date: <%= @date.to_date %></h3>
 
 <% if !@records.empty? %>
-
-    <p>--REPORTING TYPE-|--SPEND TIME--|--PROJECT NAME--</p>
+<p>REPORTING TYPE | SPEND TIME | PROJECT NAME </p>
     <% @records.each do |rec| %>
-        <p><%= rec.reporting_type %> | -- <%= rec.spend_time %> --  | <%= rec.project.name %></p>
+<p> --- <%= rec.reporting_type %> | ---- <%= hours(rec.spend_time) %> ----  | -- <%= rec.project.name %> --</p>
     <% end %>
-
     <% else %>
-    <p>No reports found for this date</p>
+<p>No reports found for this date</p>
 <% end %>
 
-
-
-<%= @records.inspect %>
-
-
-
 <form	action="/new_record" method="post" id="rec">
-
-      date<input type="text" name="date" value="<%= @date %>" id="date" />
-      </p>
-      <p>
-		<input type="submit" value="Add report">
-	</p>
+  <input type="hidden" name="date" value="<%= @date %>" id="date" />
+  <p>
+    <input type="submit" value="Add report">
+  </p>
 </form>
-
-
-
 <h3>Totals for each type of time</h3>
 
 <p>Self deployment: <%= time_sum(@selfd) %> | Working: <%= time_sum(@work) %> | Team: <%= time_sum(@team) %>

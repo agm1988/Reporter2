@@ -1,45 +1,42 @@
 <h1><%= @title %></h1>
 
-
-
 <form	action="/create" method="post" id="user">
 
-   <% if @user %>
-   <div id="errorExplanation">
-     <ul>
+  <% if @user %>
+  <div id="errorExplanation">
+    <ul>
       <% @user.errors.each do |msg| %>
       <li><%= msg %></li>
       <% end %>
     </ul>
   </div>
   <% end %>
-  	<p>
-		<label>Name:</label><br />
-		<input type="text" name="user[name]" id="name" />
+  <p>
+    <label>Name:</label><br />
+    <input type="text" name="user[name]" id="name" />
 	</p>
 	<p>
-		<label>login:</label><br />
-		<input type="text" name="user[login]" id="login" />
+      <label>login:</label><br />
+	  <input type="text" name="user[login]" id="login" />
 	</p>
 	<p>
-		<label>Email:</label><br />
-		<input type="text" name="user[email]" id="email" />
+      <label>Email:</label><br />
+	  <input type="text" name="user[email]" id="email" />
 	</p>
   	<p>
-		<label>Position:</label><br />
-		<input type="text" name="user[position]" id="position" />
+	  <label>Position:</label><br />
+	  <input type="text" name="user[position]" id="position" />
 	</p>
   	<p>
-		<label>Password:</label><br />
-		<input type="text" name="user[password]" id="password" />
+      <label>Password:</label><br />
+	  <input type="text" name="user[password]" id="password" />
 	</p>
    	<p>
-		<label>Password confirmation:</label><br />
-		<input type="text" name="user[password_confirmation]" id="password_confirmation" />
+	  <label>Password confirmation:</label><br />
+	  <input type="text" name="user[password_confirmation]" id="password_confirmation" />
 	</p>
-
 	<p>
-		<input type="submit" value="Create account">
+	  <input type="submit" value="Create account">
 	</p>
 </form>
 <script>

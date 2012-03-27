@@ -3,7 +3,7 @@
   	<p>
 		<label>Select date:</label><br />
 		<input type="text" name="date" id="date" />
-        <input type="text" name="report[date]" id="date_sent" />
+        <input type="hidden" name="report[date]" id="date_sent" />
         <input type="submit" value="find  reports">
 	</p>
 
@@ -39,8 +39,6 @@
 	$(function() {
         var myDate = new Date();
     	var month = ( '0' + (myDate.getMonth()+1) ).slice( -2 );
-        //('0' + myDate.getMonth() + 1).slice( -2 );
-    	//var prettyDate =  myDate.getDate() + '/' + month + '/' + myDate.getFullYear();
         var prettyDate =  myDate.getFullYear() + '-' + month + '-' + myDate.getDate();
     	$("#date_sent").val(prettyDate);
         $("#date").val(prettyDate);
