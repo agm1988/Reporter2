@@ -20,7 +20,6 @@ class User
    has n, :records
    has n, :projects, :through => :records
 
-
    validates_presence_of :name, :email, :position
    validates_presence_of :password
    validates_confirmation_of :password
@@ -62,26 +61,19 @@ end
 #
 class Record
 
-   # SPEND_REGEX = /^[0-9]{1}:[0-5]{1}[0-9]{1}$/
-
     include DataMapper::Resource
-
 
     property :id,                Serial
     property :reporting_type,    String
     property :spend_time,        String
-    # property :project,           String
     property :date,              DateTime
     property :description,       Text
-    attr_accessor :time # :format => SPEND_REGEX
+    attr_accessor :time
 
     belongs_to :user, :key => true
     belongs_to :project, :key => true
 
-    #belongs_to :test, :key => true
-    #belongs_to :visit, :key => true
-
-   before :save, :set_minutes
+    before :save, :set_minutes
 
     validates_presence_of :description
     validates_length_of :description, :max => 255
@@ -109,26 +101,13 @@ class Record
   end
 
   def self.this_month(month)
-
-
     date_a = DateTime.new Date.today.year, month, 1
-    date_b = (date_a >> 1) + 1  # will add a month and a day
+    date_b = (date_a >> 1) + 1
     all(:date => date_a..date_b)
-
-  #all(:date.like => "#{Time.now.to_date.to_s.chop.chop}%") # "2012-03-"
-
-
- #  all(:date.like => )
- #  # all(:date => "#{Time.now.beginning_of_month}", :date.lt => "#{Time.now.end_of_month}")
- #  # Exhibition.all(:run_time.gt => 2, :run_time.lt => 5)
- #  # zoos = Zoo.all(:conditions => { :id => 34 }, :name.like => '%foo%')
   end
 
   def self.this_day2(day)
-    #date_a = DateTime.new Date.today.year, month, 1
-    #date_b = (date_a >> 1) + 1  # will add a month and a day
     date_c = DateTime.new Date.today.year, month, day.to_i
-    #all(:date => date_a..date_b, :date => date_c)
     all(:date => date_c)
   end
 
@@ -142,7 +121,5 @@ class Record
 
 
 end
-
-# DateTime.parse("12/12/2012")
 
   DataMapper.auto_upgrade!

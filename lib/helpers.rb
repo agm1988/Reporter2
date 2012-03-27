@@ -4,8 +4,6 @@ module ReportHelper
     @title ? "Controller Demo - #{@title}" : "Controller Demo"
   end
 
-      #flash helpers
-
   def flash(args={})
     session[:flash] = args
   end
@@ -63,7 +61,7 @@ module ReportHelper
         "December"
       else
         "Wrong month number"
-
     end
+
   end
 end
