@@ -3,7 +3,9 @@ require "data_mapper"
 
 class LoginScreen < Sinatra::Base
 
-  configure(:development) { set :session_secret, "something" }
+  configure(:development) { set :session_secret, "something"
+                            set :raise_errors, Proc.new { false }
+                            set :show_exceptions, false}
 
   before do
     @flash = session[:flash2] || {}
