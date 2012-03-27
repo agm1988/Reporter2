@@ -4,6 +4,9 @@ credentials:
 User:Newcomer
 pwd: secret
 
+Also there are 2 another users
+agm1988 - "agm1988" and alex1988 - "123456"
+
 Used gems:
  addressable (2.2.7)
  bcrypt-ruby (3.0.1)
